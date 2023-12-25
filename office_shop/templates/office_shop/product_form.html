@@ -1,0 +1,30 @@
+{% extends 'office_shop/base.html' %}
+
+{% block content %}
+    <from method="post" class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    {% if object %}
+                        Редактирование товара
+                    {% else %}
+                        Добавить товар
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-outline-success">
+                            {% if object %}
+                                Сохранить
+                            {% else %}
+                                Добавить
+                            {% endif %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </from>
+{% endblock %}

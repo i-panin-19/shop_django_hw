@@ -1,0 +1,18 @@
+{% extends 'office_shop/base.html' %}
+
+{% block content %}
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <div class="col-12 mb-5">
+    <a href="{% url 'office_shop:product_create' %}" class="btn btn-primary">
+      Создать товар
+    </a>
+  </div>
+
+  {% for object in object_list %}
+    {% include 'office_shop/includes/inc_category.html' %}
+  {% endfor %}
+
+</div>
+
+{% endblock %}

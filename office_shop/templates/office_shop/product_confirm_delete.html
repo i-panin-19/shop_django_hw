@@ -1,0 +1,25 @@
+{% extends 'office_shop/base.html' %}
+
+{% block content %}
+    <from method="post" class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    Удаление товара
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <p>Удалить товар {{ object.name }}?</p>
+                        <button type="submit" class="btn btn-outline-danger">
+                            Удалить
+                        </button>
+                        <a class="btn btn-outline-warning" href="{% url 'office_shop:products' object.category.pk %}">
+                            Отмена
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </from>
+{% endblock %}

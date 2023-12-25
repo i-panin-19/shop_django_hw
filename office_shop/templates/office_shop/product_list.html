@@ -1,0 +1,27 @@
+{% extends 'office_shop/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+  {% for object in object_list %}
+
+  <div class="col">
+    <div class="card shadow-sm">
+      <img class="mx-auto d-block" src="{{ object.image|mymedia }}" height="250">
+      <div class="card-body">
+        <p class="card-text">{{ object.name }}</p>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-link" href="{% url 'office_shop:product_update' object.pk %}">Редактировать</a>
+        <a class="btn btn-outline-danger float-right" href="{% url 'office_shop:product_delete' object.pk %}">Удалить</a>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>
+
+{% endblock %}
