@@ -59,6 +59,12 @@
           <ul class="list-unstyled">
             <li><a href="{% url 'office_shop:index' %}" class="text-white">Главная</a></li>
             <li><a href="{% url 'office_shop:categories' %}" class="text-white">Все категории</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'users:logout' %}" class="text-white">Выйти</a></li>
+            {% else %}
+              <li><a href="{% url 'users:login' %}" class="text-white">Войти</a></li>
+              <li><a href="{% url 'users:register' %}" class="text-white">Регистрация</a></li>
+            {% endif %}
           </ul>
         </div>
       </div>
