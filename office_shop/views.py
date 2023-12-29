@@ -28,7 +28,7 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(category_id=self.kwargs.get('pk'))
+        queryset = queryset.filter(category_id=self.kwargs.get('pk'), owner=self.request.user)
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -44,6 +44,13 @@ class ProductCreateView(CreateView):
     model = Product
     fields = ('category', 'name', 'retail_price', 'description', 'image')
     success_url = reverse_lazy('office_shop:categories')
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+
+        return super().form_valid(form)
 
 
 class ProductUpdateView(UpdateView):

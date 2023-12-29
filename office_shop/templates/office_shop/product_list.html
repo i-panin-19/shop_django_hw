@@ -12,6 +12,8 @@
       <img class="mx-auto d-block" src="{{ object.image|mymedia }}" height="250">
       <div class="card-body">
         <p class="card-text">{{ object.name }}</p>
+        <span class="fs-4">Цена: {{ object.retail_price }} руб.</span><br>
+        <span class="text-muted">Создатель: {{ object.owner|default:"system" }}</span>
       </div>
       <div class="card-footer">
         <a class="btn btn-link" href="{% url 'office_shop:product_update' object.pk %}">Редактировать</a>
