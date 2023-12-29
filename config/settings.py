@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
     'office_shop',
     'users',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -114,6 +117,8 @@ EMAIL_PORT = 465
 EMAIL_HOST_USER = 'ilypanin@yandex.ru'
 EMAIL_HOST_PASSWORD = 'Orbit1010194'
 EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # !!! иначе всегда будет пытаться отправить с webmaster@localhost !!!
 
 
 # Internationalization
