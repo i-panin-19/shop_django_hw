@@ -1,0 +1,14 @@
+{% autoescape off %}
+
+    Вы получили это электронное письмо, потому что зарегистрировали свою учетную запись {{ site_name }}.
+
+	Перейдите на следующую страницу для подтверждения:
+	{% block reset_link %}
+	    {{ protocol }}://{{ domain }}{% url 'users:verify_email' uidb64=uid token=token %}
+	{% endblock %}
+
+	Спасибо за использование нашего сайта!
+
+	The {{ site_name }} team
+
+{% endautoescape %}
